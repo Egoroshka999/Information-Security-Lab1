@@ -1,11 +1,16 @@
 package com.informationsecuritylab1.controller
 
 import com.informationsecuritylab1.repository.UserRepository
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.util.HtmlUtils
 
+@SuppressFBWarnings(
+    value = ["BC_UNCONFIRMED_CAST"],
+    justification = "JpaRepository.findAll() returns List<User>, safe in this context"
+)
 @RestController
 @RequestMapping("/api")
 class DataController(private val userRepo: UserRepository) {
