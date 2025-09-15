@@ -13,7 +13,9 @@ import org.springframework.security.web.SecurityFilterChain
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
 
 @Configuration
-class SecurityConfig(private val jwtFilter: JwtFilter, private val customUserDetailsService: CustomUserDetailsService) {
+class SecurityConfig(
+    private val jwtFilter: JwtFilter
+) {
 
     @Bean
     fun passwordEncoder(): PasswordEncoder = BCryptPasswordEncoder(12)

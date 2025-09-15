@@ -26,7 +26,7 @@ class JwtFilter(private val jwtUtil: JwtUtil, private val userDetailsService: Cu
                     SecurityContextHolder.getContext().authentication = auth
                 }
             } catch (ex: Exception) {
-                // token invalid -> proceed without auth
+                logger.error("JWT filter error", ex)
             }
         }
         filterChain.doFilter(request, response)

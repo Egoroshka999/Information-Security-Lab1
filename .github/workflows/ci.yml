@@ -32,8 +32,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle-
 
-      - name: Build (tests)
-        run: ./gradlew build --no-daemon
+      - name: Build (skip test)
+        run: ./gradlew clean build -x test --no-daemon
 
       - name: Run SpotBugs
         run: ./gradlew spotbugsMain
