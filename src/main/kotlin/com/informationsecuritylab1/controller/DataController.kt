@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.util.HtmlUtils
 
 @SuppressFBWarnings(
-    value = ["BC_UNCONFIRMED_CAST"],
+    value = ["BC_BAD_CAST"],
     justification = "JpaRepository.findAll() returns List<User>, safe in this context"
 )
 @RestController
