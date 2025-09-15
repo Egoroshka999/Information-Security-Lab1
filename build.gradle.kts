@@ -52,7 +52,7 @@ tasks.withType<Test> {
 }
 
 spotbugs {
-    toolVersion.set("4.7.0")
+    toolVersion.set("4.9.4")
     effort.set(com.github.spotbugs.snom.Effort.MAX)
     reportLevel.set(com.github.spotbugs.snom.Confidence.LOW)
 }

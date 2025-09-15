@@ -13,10 +13,9 @@ class DataController(private val userRepo: UserRepository) {
     @GetMapping("/data")
     fun getData(): Any {
         // В качестве примера возвращаем список пользователей (username) — но экранируем их для XSS
-        val users = userRepo.findAll().map { u ->
+        val users: List<Map<String, Any>> = userRepo.findAll().toList().map { u ->
             mapOf(
                 "id" to u.id,
-                // simple XSS protection: escape username before returning
                 "username" to HtmlUtils.htmlEscape(u.username)
             )
         }
