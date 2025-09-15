@@ -61,3 +61,4 @@ dependencyCheck {
     failBuildOnCVSS = 11.0F
     analyzers.assemblyEnabled = false
 }
+
