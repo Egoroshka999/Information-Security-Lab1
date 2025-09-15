@@ -1,4 +1,3 @@
-version: "3.8"
 services:
   db:
     image: postgres:15
@@ -10,20 +9,6 @@ services:
       - db-data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
-
-  app:
-    build: .
-    depends_on:
-      - db
-    environment:
-      DB_HOST: db
-      DB_PORT: 5432
-      DB_NAME: postgres
-      DB_USER: postgres
-      DB_PASSWORD: postgres
-      JWT_SECRET: Information_Security_Lab1
-    ports:
-      - "8080:8080"
 
 volumes:
   db-data:

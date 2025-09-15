@@ -14,4 +14,7 @@ data class User(
     var passwordHash: String,
     @Column(nullable = false)
     var role: String = "USER"
-)
+) {
+    constructor() : this(0, "", "", "USER") {
+    }
+}

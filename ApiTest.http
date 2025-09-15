@@ -1,0 +1,59 @@
+###
+### 1. Регистрация нового пользователя
+POST http://localhost:8080/auth/register
+Content-Type: application/json
+
+{
+  "username": "alice",
+  "password": "Password123!"
+}
+
+###
+
+### 2. SQLi Логин с инъекцией
+POST http://localhost:8080/auth/login
+Content-Type: application/json
+
+{
+  "username": "alice' OR '1' = '1'",
+  "password": "Password123!"
+}
+
+> {% client.global.set("auth_token", response.body.token); %}
+
+###
+
+### 3. Логин с существующим пользователем
+POST http://localhost:8080/auth/login
+Content-Type: application/json
+
+{
+  "username": "alice",
+  "password": "Password123!"
+}
+
+> {% client.global.set("auth_token", response.body.token); %}
+
+###
+
+### 4. XSS
+POST http://localhost:8080/auth/register
+Content-Type: application/json
+
+{
+  "username": "<script>alert('hacked')</script>",
+  "password": "Password123!"
+}
+
+###
+
+### XSS Получение списка пользователей
+GET http://localhost:8080/api/data
+Authorization: Bearer {{auth_token}}
+
+###
+
+### 3. Попробовать получить данные без токена (должно быть 403)
+GET http://localhost:8080/api/data
+
+###
