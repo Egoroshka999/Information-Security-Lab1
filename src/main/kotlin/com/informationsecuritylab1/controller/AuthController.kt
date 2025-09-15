@@ -5,10 +5,15 @@ import com.informationsecuritylab1.dto.LoginRequest
 import com.informationsecuritylab1.dto.LoginResponse
 import com.informationsecuritylab1.dto.RegisterRequest
 import com.informationsecuritylab1.service.UserService
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
 import jakarta.validation.Valid
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
+@SuppressFBWarnings(
+    value = ["SA_LOCAL_SELF_ASSIGNMENT"],
+    justification = "False positive: Kotlin bytecode misdetected as self-assignment"
+)
 @RestController
 @RequestMapping("/auth")
 class AuthController(private val userService: UserService, private val jwtUtil: JwtUtil) {

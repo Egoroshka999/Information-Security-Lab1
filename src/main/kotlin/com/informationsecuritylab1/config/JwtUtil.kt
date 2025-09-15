@@ -12,7 +12,9 @@ class JwtUtil(
     @Value("\${app.jwt.secret}") private val jwtSecret: String,
     @Value("\${app.jwt.expiration-ms}") private val expirationMs: Long
 ) {
-    private val key: SecretKey = Keys.hmacShaKeyFor(jwtSecret.toByteArray())
+    private val key: SecretKey by lazy {
+        Keys.hmacShaKeyFor(jwtSecret.toByteArray())
+    }
 
     fun generateToken(username: String): String {
         val now = Date()
