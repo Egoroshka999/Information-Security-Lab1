@@ -11,7 +11,7 @@ import org.springframework.web.util.HtmlUtils
 class DataController(private val userRepo: UserRepository) {
 
     @GetMapping("/data")
-    fun getData(): Any {
+    fun getData(): Map<String, List<Map<String, Any>>> {
         // В качестве примера возвращаем список пользователей (username) — но экранируем их для XSS
         val users: List<Map<String, Any>> = userRepo.findAll().toList().map { u ->
             mapOf(
