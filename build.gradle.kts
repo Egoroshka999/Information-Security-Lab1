@@ -39,7 +39,8 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-validation")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.security:spring-security-test")
-    compileOnly("com.github.spotbugs:spotbugs-annotations:4.9.4") // только для компиляции
+    compileOnly("com.github.spotbugs:spotbugs-annotations:4.9.4")
+    spotbugs("com.github.spotbugs:spotbugs-annotations:4.9.4")
 }
 
 kotlin {
