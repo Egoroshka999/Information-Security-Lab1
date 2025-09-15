@@ -41,6 +41,7 @@ dependencies {
     testImplementation("org.springframework.security:spring-security-test")
     compileOnly("com.github.spotbugs:spotbugs-annotations:4.9.4")
     spotbugs("com.github.spotbugs:spotbugs-annotations:4.9.4")
+    spotbugs("com.github.spotbugs:spotbugs:4.9.4")
 }
 
 kotlin {
