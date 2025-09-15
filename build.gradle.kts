@@ -63,5 +63,8 @@ spotbugs {
 dependencyCheck {
     failBuildOnCVSS = 11.0F
     analyzers.assemblyEnabled = false
+    nvd {
+        apiKey = System.getenv("NVD_API_KEY")
+    }
 }
 
