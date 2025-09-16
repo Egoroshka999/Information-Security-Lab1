@@ -47,6 +47,12 @@ dependencies {
     implementation("org.apache.commons:commons-lang3:3.18.0")
 }
 
+configurations.all {
+    resolutionStrategy {
+        force("org.apache.commons:commons-lang3:3.18.0")
+    }
+}
+
 kotlin {
     compilerOptions {
         freeCompilerArgs.addAll("-Xjsr305=strict")
