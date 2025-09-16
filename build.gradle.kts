@@ -48,8 +48,11 @@ dependencies {
 }
 
 configurations.all {
-    resolutionStrategy {
-        force("org.apache.commons:commons-lang3:3.18.0")
+    resolutionStrategy.eachDependency {
+        if (requested.group == "org.apache.commons" && requested.name == "commons-lang3") {
+            useVersion("3.18.0")
+            because("Fix CVE-2025-48924 in commons-lang3:3.17.0")
+        }
     }
 }
 
