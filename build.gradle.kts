@@ -1,7 +1,7 @@
 plugins {
     kotlin("jvm") version "1.9.25"
     kotlin("plugin.spring") version "1.9.25"
-    id("org.springframework.boot") version "4.0.0-M2"
+    id("org.springframework.boot") version "3.5.5"
     id("io.spring.dependency-management") version "1.1.7"
     id("com.github.spotbugs") version "6.2.7"
     id("org.owasp.dependencycheck") version "12.1.3"
@@ -42,6 +42,9 @@ dependencies {
     compileOnly("com.github.spotbugs:spotbugs-annotations:4.9.4")
     spotbugs("com.github.spotbugs:spotbugs-annotations:4.9.4")
     spotbugs("com.github.spotbugs:spotbugs:4.9.4")
+    implementation("org.springframework:spring-core:6.2.11")
+    implementation("org.springframework.security:spring-security-core:6.5.4")
+    implementation("org.apache.commons:commons-lang3:3.18.0")
 }
 
 kotlin {
@@ -68,3 +71,11 @@ dependencyCheck {
     }
 }
 
+tasks.withType<com.github.spotbugs.snom.SpotBugsTask> {
+    reports {
+        create("html") {
+            required.set(true)
+            outputLocation.set(layout.buildDirectory.file("reports/spotbugs/spotbugs.html"))
+        }
+    }
+}
